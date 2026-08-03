@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}Student Registration{% endblock %}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+</head>
+<body>
+<header class="topbar">
+  <span class="brand">Student Registration Portal</span>
+  <nav>
+    {% if current_user %}
+      <a href="{{ url_for('main.dashboard') }}">Dashboard</a>
+      <a href="{{ url_for('main.courses') }}">Courses</a>
+      <a href="{{ url_for('main.profile') }}">Profile</a>
+      <a href="{{ url_for('main.preview_url') }}">Preview</a>
+      {% if current_role == 'admin' %}<a href="{{ url_for('main.admin_home') }}">Admin</a>{% endif %}
+      <form method="post" action="{{ url_for('auth.logout') }}" class="inline">
+        <input type="hidden" name="{{ csrf_field }}" value="{{ csrf_token }}">
+        <button type="submit" class="link">Sign out</button>
+      </form>
+    {% endif %}
+  </nav>
+</header>
+
+<main>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <ul class="flash">
+      {% for category, message in messages %}
+        <li class="flash-{{ category }}">{{ message }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+  {% block content %}{% endblock %}
+</main>
+
+<footer><small>IFT 542 practical assignment &mdash; localhost lab build. Fictitious data only.</small></footer>
+</body>
+</html>

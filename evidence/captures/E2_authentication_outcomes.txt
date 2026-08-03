@@ -1,0 +1,25 @@
+EVIDENCE E2 - Authentication outcomes over HTTP
+Captured: 2026-08-03 03:09:47 UTC    Fictitious lab accounts only
+==========================================================================
+[1] Valid credentials -> expect 302 to /dashboard
+    HTTP 302  Location: http://127.0.0.1:5000/dashboard
+
+[2] Wrong password -> expect 401, generic message
+    HTTP 401
+    Message: Invalid credentials. Please check your details and try again.
+
+[3] Unknown account -> expect the SAME 401 and message (no enumeration)
+    HTTP 401
+    Message: Invalid credentials. Please check your details and try again.
+
+[4] Admin account -> expect 302 to /login/mfa (second factor required)
+    HTTP 302  Location: http://127.0.0.1:5000/login/mfa
+
+[5] HEAD /login -> expect 200, and no failed-login event (regression check)
+    HTTP 200
+
+[6] Anonymous request for /dashboard -> expect 302 to /login
+    HTTP 302  Location: http://127.0.0.1:5000/login?next=/dashboard
+
+[7] Student session requesting /admin -> expect 403
+    HTTP 403

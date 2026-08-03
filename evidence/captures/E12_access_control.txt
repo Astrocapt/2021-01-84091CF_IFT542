@@ -1,0 +1,22 @@
+EVIDENCE E12 - Access control (vertical and horizontal)
+Captured: 2026-08-03 03:09:47 UTC    Session: student.one@lab.test (role=student)
+======================================================================
+
+[1] Student session requests the administrative area -> expect 403
+    GET /admin                              HTTP 403
+
+[2] Same request, but with a forged role in a header and query string.
+    Authorisation reads the role from the server-side session record, so
+    client-supplied role data has no effect -> expect 403
+    GET /admin?role=admin (X-Role: admin)   HTTP 403
+
+[3] Student attempts a privileged write -> expect 403
+    POST /admin/courses                     HTTP 403
+
+[4] Anonymous session requests a protected page -> expect 302 to /login
+    GET /dashboard                          HTTP 302 -> http://127.0.0.1:5000/login?next=/dashboard
+
+[5] Confirm no course was created by step [3]:
+    courses matching the attempted insert: 0  (none created - PASS)
+
+Each denial is recorded as an authz.denied audit event (see E11).

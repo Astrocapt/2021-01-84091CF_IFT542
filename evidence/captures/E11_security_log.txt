@@ -1,0 +1,101 @@
+EVIDENCE E11 - Security audit log (redacted extract)
+Captured: 2026-08-03 03:10:50 UTC
+File: evidence/logs/security.log  (JSON Lines, one event per line)
+Fictitious lab accounts. Source addresses are loopback.
+======================================================================
+
+EVENT SUMMARY FOR THE CAPTURE SESSION
+
+  event                 outcome    count
+  --------------------------------------
+  auth.lockout          denied         1
+  auth.login            denied         3
+  auth.login            failure        7
+  auth.login            success        3
+  auth.logout           success        1
+  auth.mfa_challenge    success        1
+  authz.denied          denied         6
+  csrf.rejected         denied         3
+  enrolment.create      success        1
+  profile.update        success        1
+  ssrf.blocked          denied         9
+  upload.accepted       success        1
+  upload.rejected       denied         2
+  validation.rejected   denied         1
+  --------------------------------------
+  TOTAL                               40
+
+======================================================================
+DETAILED TIMELINE (final 15 events of the session)
+
+  26. 2026-08-03T03:09:53+00:00  login attempt
+      event=auth.login  outcome=denied  actor=2  subject=login  source=127.0.0.1
+      detail={'email': 's***o@lab.test', 'reason': 'account-locked'}
+  27. 2026-08-03T03:09:53+00:00  login attempt
+      event=auth.login  outcome=denied  actor=2  subject=login  source=127.0.0.1
+      detail={'email': 's***o@lab.test', 'reason': 'account-locked'}
+  28. 2026-08-03T03:09:53+00:00  login attempt
+      event=auth.login  outcome=success  actor=1  subject=login  source=127.0.0.1
+      detail={'email': 's***e@lab.test', 'role': 'student'}
+  29. 2026-08-03T03:09:53+00:00  login attempt
+      event=auth.login  outcome=success  actor=1  subject=login  source=127.0.0.1
+      detail={'email': 's***e@lab.test', 'role': 'student'}
+  30. 2026-08-03T03:09:53+00:00  authorisation denied
+      event=authz.denied  outcome=denied  actor=1  subject=/admin  source=127.0.0.1
+      detail={'reason': 'insufficient-role'}
+  31. 2026-08-03T03:09:53+00:00  authorisation denied
+      event=authz.denied  outcome=denied  actor=1  subject=/admin  source=127.0.0.1
+      detail={'reason': 'insufficient-role'}
+  32. 2026-08-03T03:09:54+00:00  authorisation denied
+      event=authz.denied  outcome=denied  actor=1  subject=/admin/courses  source=127.0.0.1
+      detail={'reason': 'insufficient-role'}
+  33. 2026-08-03T03:09:54+00:00  authorisation denied
+      event=authz.denied  outcome=denied  actor=anonymous  subject=/dashboard  source=127.0.0.1
+      detail={'reason': 'not-authenticated'}
+  34. 2026-08-03T03:09:54+00:00  document rejected
+      event=upload.rejected  outcome=denied  actor=1  subject=notes.sh  source=127.0.0.1
+      detail={'reason': 'extension-not-allowed'}
+  35. 2026-08-03T03:09:54+00:00  document rejected
+      event=upload.rejected  outcome=denied  actor=1  subject=report.pdf  source=127.0.0.1
+      detail={'reason': 'content-does-not-match-type'}
+  36. 2026-08-03T03:09:54+00:00  document accepted
+      event=upload.accepted  outcome=success  actor=1  subject=5d044c9cf45f2eac36a0eeef10c50bb2.pdf  source=127.0.0.1
+      detail={'content_type': 'application/pdf', 'size': 35}
+  37. 2026-08-03T03:09:54+00:00  outbound destination blocked
+      event=ssrf.blocked  outcome=denied  actor=1  subject=http://169.254.169.254/latest/meta-data/  source=127.0.0.1
+      detail={'reason': 'Destination host is not on the approved list.'}
+  38. 2026-08-03T03:09:54+00:00  CSRF token rejected
+      event=csrf.rejected  outcome=denied  actor=1  subject=/courses/register  source=127.0.0.1
+      detail={'method': 'POST'}
+  39. 2026-08-03T03:09:54+00:00  input validation rejected
+      event=validation.rejected  outcome=denied  actor=1  subject=profile  source=127.0.0.1
+      detail={'reason': 'Department exceeds 80 characters.'}
+  40. 2026-08-03T03:09:54+00:00  session ended
+      event=auth.logout  outcome=success  actor=1  subject=None  source=127.0.0.1
+
+======================================================================
+RAW FORMAT (first three lines, exactly as written to disk)
+
+  {"ts":"2026-08-03T03:09:52+00:00","event":"auth.login","outcome":"success","actor":"1","subject":"login","source_ip":"127.0.0.1","detail":{"email":"s***e@lab.test","role":"student"}}
+  {"ts":"2026-08-03T03:09:52+00:00","event":"auth.login","outcome":"failure","actor":"1","subject":"login","source_ip":"127.0.0.1","detail":{"email":"s***e@lab.test","reason":"bad-credentials"}}
+  {"ts":"2026-08-03T03:09:52+00:00","event":"auth.login","outcome":"failure","actor":"anonymous","subject":"login","source_ip":"127.0.0.1","detail":{"email":"d***t@lab.test","reason":"bad-credentials"}}
+
+======================================================================
+WHAT THE RECORD ANSWERS
+  who   : actor (internal user id, not a name or address)
+  what  : event + subject + outcome
+  when  : ts, ISO-8601 with UTC offset
+  where : source_ip
+
+WHAT IS DELIBERATELY ABSENT
+  * no password, OTP code, session cookie, CSRF token or MFA secret
+  * email addresses are masked (r***r@lab.test), keeping the domain for
+    triage while not writing the full personal identifier to the log
+  * no full request body and no stack trace
+
+AUTOMATED CHECK - searching the log for values that must never appear:
+  student password             absent - PASS
+  registrar password           absent - PASS
+  wrong-password guess         absent - PASS
+  full email address           absent - PASS
+  session cookie name/value    absent - PASS

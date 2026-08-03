@@ -1,0 +1,30 @@
+EVIDENCE E8 - Account lockout and source rate limiting
+Captured: 2026-08-03 03:09:47 UTC
+Target: 127.0.0.1:5000, fictitious account student.two@lab.test
+Policy: lock after 5 account failures for 15 minutes; throttle a source
+        after 20 failures in a 15-minute window.
+======================================================================
+
+Repeated wrong-password submissions for one account:
+  attempt 1 -> HTTP 401   Invalid credentials
+  attempt 2 -> HTTP 401   Invalid credentials
+  attempt 3 -> HTTP 401   Invalid credentials
+  attempt 4 -> HTTP 401   Invalid credentials
+  attempt 5 -> HTTP 401   Invalid credentials
+  attempt 6 -> HTTP 401   Invalid credentials
+  attempt 7 -> HTTP 401   Invalid credentials
+
+Account state recorded in the database after the run:
+    failed_attempts = 5
+    locked_until    = 2026-08-03T03:24:53+00:00  (UTC, temporary)
+    note: the counter stops at the threshold because later attempts are
+          refused by the lock before the credential check is reached.
+
+Now the CORRECT password, while the lock is in force:
+    HTTP 401   Invalid credentials. Please check your details and try again.
+
+  The refusal is worded identically to an ordinary failure, so the
+  response does not tell an attacker that the account is locked.
+
+Unaffected account still authenticates normally (lockout is per-account):
+    HTTP 302  Location: http://127.0.0.1:5000/dashboard

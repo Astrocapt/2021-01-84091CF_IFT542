@@ -1,0 +1,40 @@
+{"ts":"2026-08-03T03:09:52+00:00","event":"auth.login","outcome":"success","actor":"1","subject":"login","source_ip":"127.0.0.1","detail":{"email":"s***e@lab.test","role":"student"}}
+{"ts":"2026-08-03T03:09:52+00:00","event":"auth.login","outcome":"failure","actor":"1","subject":"login","source_ip":"127.0.0.1","detail":{"email":"s***e@lab.test","reason":"bad-credentials"}}
+{"ts":"2026-08-03T03:09:52+00:00","event":"auth.login","outcome":"failure","actor":"anonymous","subject":"login","source_ip":"127.0.0.1","detail":{"email":"d***t@lab.test","reason":"bad-credentials"}}
+{"ts":"2026-08-03T03:09:52+00:00","event":"auth.mfa_challenge","outcome":"success","actor":"3","subject":"login","source_ip":"127.0.0.1","detail":{"email":"r***r@lab.test"}}
+{"ts":"2026-08-03T03:09:52+00:00","event":"authz.denied","outcome":"denied","actor":"anonymous","subject":"/dashboard","source_ip":"127.0.0.1","detail":{"reason":"not-authenticated"}}
+{"ts":"2026-08-03T03:09:52+00:00","event":"authz.denied","outcome":"denied","actor":"1","subject":"/admin","source_ip":"127.0.0.1","detail":{"reason":"insufficient-role"}}
+{"ts":"2026-08-03T03:09:52+00:00","event":"csrf.rejected","outcome":"denied","actor":"1","subject":"/courses/register","source_ip":"127.0.0.1","detail":{"method":"POST"}}
+{"ts":"2026-08-03T03:09:52+00:00","event":"csrf.rejected","outcome":"denied","actor":"1","subject":"/courses/register","source_ip":"127.0.0.1","detail":{"method":"POST"}}
+{"ts":"2026-08-03T03:09:52+00:00","event":"enrolment.create","outcome":"success","actor":"1","subject":"course:1","source_ip":"127.0.0.1","detail":{}}
+{"ts":"2026-08-03T03:09:52+00:00","event":"ssrf.blocked","outcome":"denied","actor":"1","subject":"http://127.0.0.1:5000/admin","source_ip":"127.0.0.1","detail":{"reason":"Destination port is not permitted."}}
+{"ts":"2026-08-03T03:09:52+00:00","event":"ssrf.blocked","outcome":"denied","actor":"1","subject":"http://localhost/","source_ip":"127.0.0.1","detail":{"reason":"Destination host is not on the approved list."}}
+{"ts":"2026-08-03T03:09:52+00:00","event":"ssrf.blocked","outcome":"denied","actor":"1","subject":"http://169.254.169.254/latest/meta-data/","source_ip":"127.0.0.1","detail":{"reason":"Destination host is not on the approved list."}}
+{"ts":"2026-08-03T03:09:52+00:00","event":"ssrf.blocked","outcome":"denied","actor":"1","subject":"http://10.0.0.5/internal","source_ip":"127.0.0.1","detail":{"reason":"Destination host is not on the approved list."}}
+{"ts":"2026-08-03T03:09:52+00:00","event":"ssrf.blocked","outcome":"denied","actor":"1","subject":"file:///etc/passwd","source_ip":"127.0.0.1","detail":{"reason":"Only http and https destinations are permitted."}}
+{"ts":"2026-08-03T03:09:52+00:00","event":"ssrf.blocked","outcome":"denied","actor":"1","subject":"http://docs.futminna.test:8080/x","source_ip":"127.0.0.1","detail":{"reason":"Destination port is not permitted."}}
+{"ts":"2026-08-03T03:09:52+00:00","event":"ssrf.blocked","outcome":"denied","actor":"1","subject":"https://unlisted.example.net/doc.pdf","source_ip":"127.0.0.1","detail":{"reason":"Destination host is not on the approved list."}}
+{"ts":"2026-08-03T03:09:52+00:00","event":"ssrf.blocked","outcome":"denied","actor":"1","subject":"https://docs.futminna.test@127.0.0.1/","source_ip":"127.0.0.1","detail":{"reason":"Credentials in the URL are not permitted."}}
+{"ts":"2026-08-03T03:09:52+00:00","event":"profile.update","outcome":"success","actor":"1","subject":"profile","source_ip":"127.0.0.1","detail":{}}
+{"ts":"2026-08-03T03:09:53+00:00","event":"auth.login","outcome":"failure","actor":"2","subject":"login","source_ip":"127.0.0.1","detail":{"email":"s***o@lab.test","reason":"bad-credentials"}}
+{"ts":"2026-08-03T03:09:53+00:00","event":"auth.login","outcome":"failure","actor":"2","subject":"login","source_ip":"127.0.0.1","detail":{"email":"s***o@lab.test","reason":"bad-credentials"}}
+{"ts":"2026-08-03T03:09:53+00:00","event":"auth.login","outcome":"failure","actor":"2","subject":"login","source_ip":"127.0.0.1","detail":{"email":"s***o@lab.test","reason":"bad-credentials"}}
+{"ts":"2026-08-03T03:09:53+00:00","event":"auth.login","outcome":"failure","actor":"2","subject":"login","source_ip":"127.0.0.1","detail":{"email":"s***o@lab.test","reason":"bad-credentials"}}
+{"ts":"2026-08-03T03:09:53+00:00","event":"auth.lockout","outcome":"denied","actor":"2","subject":"login","source_ip":"127.0.0.1","detail":{"email":"s***o@lab.test","attempts":5}}
+{"ts":"2026-08-03T03:09:53+00:00","event":"auth.login","outcome":"failure","actor":"2","subject":"login","source_ip":"127.0.0.1","detail":{"email":"s***o@lab.test","reason":"bad-credentials"}}
+{"ts":"2026-08-03T03:09:53+00:00","event":"auth.login","outcome":"denied","actor":"2","subject":"login","source_ip":"127.0.0.1","detail":{"email":"s***o@lab.test","reason":"account-locked"}}
+{"ts":"2026-08-03T03:09:53+00:00","event":"auth.login","outcome":"denied","actor":"2","subject":"login","source_ip":"127.0.0.1","detail":{"email":"s***o@lab.test","reason":"account-locked"}}
+{"ts":"2026-08-03T03:09:53+00:00","event":"auth.login","outcome":"denied","actor":"2","subject":"login","source_ip":"127.0.0.1","detail":{"email":"s***o@lab.test","reason":"account-locked"}}
+{"ts":"2026-08-03T03:09:53+00:00","event":"auth.login","outcome":"success","actor":"1","subject":"login","source_ip":"127.0.0.1","detail":{"email":"s***e@lab.test","role":"student"}}
+{"ts":"2026-08-03T03:09:53+00:00","event":"auth.login","outcome":"success","actor":"1","subject":"login","source_ip":"127.0.0.1","detail":{"email":"s***e@lab.test","role":"student"}}
+{"ts":"2026-08-03T03:09:53+00:00","event":"authz.denied","outcome":"denied","actor":"1","subject":"/admin","source_ip":"127.0.0.1","detail":{"reason":"insufficient-role"}}
+{"ts":"2026-08-03T03:09:53+00:00","event":"authz.denied","outcome":"denied","actor":"1","subject":"/admin","source_ip":"127.0.0.1","detail":{"reason":"insufficient-role"}}
+{"ts":"2026-08-03T03:09:54+00:00","event":"authz.denied","outcome":"denied","actor":"1","subject":"/admin/courses","source_ip":"127.0.0.1","detail":{"reason":"insufficient-role"}}
+{"ts":"2026-08-03T03:09:54+00:00","event":"authz.denied","outcome":"denied","actor":"anonymous","subject":"/dashboard","source_ip":"127.0.0.1","detail":{"reason":"not-authenticated"}}
+{"ts":"2026-08-03T03:09:54+00:00","event":"upload.rejected","outcome":"denied","actor":"1","subject":"notes.sh","source_ip":"127.0.0.1","detail":{"reason":"extension-not-allowed"}}
+{"ts":"2026-08-03T03:09:54+00:00","event":"upload.rejected","outcome":"denied","actor":"1","subject":"report.pdf","source_ip":"127.0.0.1","detail":{"reason":"content-does-not-match-type"}}
+{"ts":"2026-08-03T03:09:54+00:00","event":"upload.accepted","outcome":"success","actor":"1","subject":"5d044c9cf45f2eac36a0eeef10c50bb2.pdf","source_ip":"127.0.0.1","detail":{"content_type":"application/pdf","size":35}}
+{"ts":"2026-08-03T03:09:54+00:00","event":"ssrf.blocked","outcome":"denied","actor":"1","subject":"http://169.254.169.254/latest/meta-data/","source_ip":"127.0.0.1","detail":{"reason":"Destination host is not on the approved list."}}
+{"ts":"2026-08-03T03:09:54+00:00","event":"csrf.rejected","outcome":"denied","actor":"1","subject":"/courses/register","source_ip":"127.0.0.1","detail":{"method":"POST"}}
+{"ts":"2026-08-03T03:09:54+00:00","event":"validation.rejected","outcome":"denied","actor":"1","subject":"profile","source_ip":"127.0.0.1","detail":{"reason":"Department exceeds 80 characters."}}
+{"ts":"2026-08-03T03:09:54+00:00","event":"auth.logout","outcome":"success","actor":"1","subject":null,"source_ip":"127.0.0.1","detail":{}}

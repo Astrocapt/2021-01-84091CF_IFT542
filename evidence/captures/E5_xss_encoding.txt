@@ -1,0 +1,13 @@
+EVIDENCE E5 - XSS output encoding
+Captured: 2026-08-03 03:09:47 UTC
+A benign marker containing markup metacharacters is stored in the profile
+bio field, then the rendered dashboard is inspected.
+==========================================================================
+Stored value (read back from the database, unmodified):
+    <script>marker</script>
+
+As rendered in the HTML response (grep of the bio element):
+    id="bio-field">&lt;script&gt;marker&lt;/script&gt;
+
+The angle brackets were converted to entities, so the browser parses the
+value as text. The CSP provides the second, independent barrier.

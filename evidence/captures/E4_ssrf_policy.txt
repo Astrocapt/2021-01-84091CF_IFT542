@@ -1,0 +1,13 @@
+EVIDENCE E4 - SSRF destination policy (localhost only)
+Captured: 2026-08-03 03:09:47 UTC
+All targets below are loopback / private / metadata addresses. No request
+leaves the host: the guard refuses before any socket is opened.
+==========================================================================
+    http://127.0.0.1:5000/admin                   -> HTTP 400  not permitted
+    http://localhost/                             -> HTTP 400  not permitted
+    http://169.254.169.254/latest/meta-data/      -> HTTP 400  not permitted
+    http://10.0.0.5/internal                      -> HTTP 400  not permitted
+    file:///etc/passwd                            -> HTTP 400  not permitted
+    http://docs.futminna.test:8080/x              -> HTTP 400  not permitted
+    https://unlisted.example.net/doc.pdf          -> HTTP 400  not permitted
+    https://docs.futminna.test@127.0.0.1/         -> HTTP 400  not permitted

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Administration{% endblock %}
+{% block content %}
+<h1>Administration</h1>
+<section class="card">
+  <h2>Overview</h2>
+  <p>{{ stats['users'] }} accounts &middot; {{ stats['courses'] }} courses &middot; {{ stats['enrolments'] }} enrolments</p>
+</section>
+
+<section class="card">
+  <h2>Add a course</h2>
+  <form method="post" action="{{ url_for('main.admin_add_course') }}">
+    <input type="hidden" name="{{ csrf_field }}" value="{{ csrf_token }}">
+    <input type="text" name="code" placeholder="IFT 542" maxlength="12" required>
+    <input type="text" name="title" placeholder="Course title" maxlength="120" required>
+    <input type="number" name="units" value="3" min="1" max="12" required>
+    <button type="submit">Add course</button>
+  </form>
+</section>
+
+<section class="card">
+  <h2>Recent security events</h2>
+  <table>
+    <thead><tr><th>When</th><th>Event</th><th>Actor</th><th>Subject</th><th>Outcome</th><th>Source</th></tr></thead>
+    <tbody>
+    {% for r in recent %}
+      <tr><td>{{ r['occurred_at'] }}</td><td>{{ r['event'] }}</td><td>{{ r['actor'] }}</td>
+          <td>{{ r['subject'] }}</td><td>{{ r['outcome'] }}</td><td>{{ r['source_ip'] }}</td></tr>
+    {% else %}<tr><td colspan="6">No events recorded.</td></tr>{% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}

@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="1010" viewBox="0 0 1320 1010" font-family="Georgia, serif">
+<rect width="1320" height="1010" fill="#ffffff"/>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#33455a"/></marker><marker id="al" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#9a8b72"/></marker></defs>
+<text x="660" y="34" text-anchor="middle" font-size="21" font-weight="bold" fill="#1b2430">Student Registration Web Application &#8212; Level 1 Data-Flow Diagram</text>
+<text x="660" y="56" text-anchor="middle" font-size="13" fill="#4a5a6a">IFT 542 Practical Assignment &#183; dashed red lines are trust boundaries</text>
+<rect x="30" y="120" width="250" height="540" fill="none" stroke="#b3312c" stroke-width="1.8" stroke-dasharray="9 6" rx="8"/>
+<text x="40" y="112" font-size="12.5" font-weight="bold" fill="#b3312c">TB1 &#8212; Untrusted client zone</text>
+<rect x="340" y="96" width="480" height="880" fill="none" stroke="#b3312c" stroke-width="1.8" stroke-dasharray="9 6" rx="8"/>
+<text x="350" y="88" font-size="12.5" font-weight="bold" fill="#b3312c">TB2 &#8212; Application trust boundary (localhost host)</text>
+<rect x="852" y="110" width="288" height="720" fill="none" stroke="#b3312c" stroke-width="1.8" stroke-dasharray="9 6" rx="8"/>
+<text x="862" y="102" font-size="12.5" font-weight="bold" fill="#b3312c">TB3 &#8212; Data-store trust boundary</text>
+<rect x="852" y="880" width="288" height="96" fill="none" stroke="#b3312c" stroke-width="1.8" stroke-dasharray="9 6" rx="8"/>
+<text x="862" y="872" font-size="12.5" font-weight="bold" fill="#b3312c">TB4 &#8212; External network boundary</text>
+<rect x="56" y="154.0" width="196" height="72" fill="#eef2f6" stroke="#4a5a6a" stroke-width="1.6" rx="3"/>
+<text x="154.0" y="181.5" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#4a5a6a">E1 Administrator</text>
+<text x="154.0" y="197.5" text-anchor="middle" font-size="11.5" fill="#1b2430">Manages courses</text>
+<text x="154.0" y="210.5" text-anchor="middle" font-size="11.5" fill="#1b2430">and enrolments</text>
+<rect x="56" y="344.0" width="196" height="72" fill="#eef2f6" stroke="#4a5a6a" stroke-width="1.6" rx="3"/>
+<text x="154.0" y="371.5" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#4a5a6a">E2 Student</text>
+<text x="154.0" y="387.5" text-anchor="middle" font-size="11.5" fill="#1b2430">Profile, registration,</text>
+<text x="154.0" y="400.5" text-anchor="middle" font-size="11.5" fill="#1b2430">document upload</text>
+<rect x="56" y="534.0" width="196" height="72" fill="#eef2f6" stroke="#4a5a6a" stroke-width="1.6" rx="3"/>
+<text x="154.0" y="561.5" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#4a5a6a">E3 Anonymous visitor</text>
+<text x="154.0" y="577.5" text-anchor="middle" font-size="11.5" fill="#1b2430">Reaches the</text>
+<text x="154.0" y="590.5" text-anchor="middle" font-size="11.5" fill="#1b2430">sign-in page only</text>
+<rect x="866" y="895.0" width="260" height="66" fill="#eef2f6" stroke="#4a5a6a" stroke-width="1.6" rx="3"/>
+<text x="996.0" y="919.5" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#4a5a6a">E4 Registry service</text>
+<text x="996.0" y="935.5" text-anchor="middle" font-size="11.5" fill="#1b2430">Allowlisted external</text>
+<text x="996.0" y="948.5" text-anchor="middle" font-size="11.5" fill="#1b2430">document host</text>
+<circle cx="470" cy="170" r="56" fill="#eaf0f6" stroke="#1f4e79" stroke-width="1.8"/>
+<text x="470" y="161.5" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#1f4e79">P1</text>
+<text x="470" y="177.5" text-anchor="middle" font-size="11.5" fill="#1b2430">Authenticate</text>
+<text x="470" y="190.5" text-anchor="middle" font-size="11.5" fill="#1b2430">and session</text>
+<circle cx="470" cy="290" r="56" fill="#eaf0f6" stroke="#1f4e79" stroke-width="1.8"/>
+<text x="470" y="281.5" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#1f4e79">P2</text>
+<text x="470" y="297.5" text-anchor="middle" font-size="11.5" fill="#1b2430">Manage</text>
+<text x="470" y="310.5" text-anchor="middle" font-size="11.5" fill="#1b2430">profile</text>
+<circle cx="470" cy="410" r="56" fill="#eaf0f6" stroke="#1f4e79" stroke-width="1.8"/>
+<text x="470" y="401.5" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#1f4e79">P3</text>
+<text x="470" y="417.5" text-anchor="middle" font-size="11.5" fill="#1b2430">Course</text>
+<text x="470" y="430.5" text-anchor="middle" font-size="11.5" fill="#1b2430">registration</text>
+<circle cx="470" cy="530" r="56" fill="#eaf0f6" stroke="#1f4e79" stroke-width="1.8"/>
+<text x="470" y="521.5" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#1f4e79">P4</text>
+<text x="470" y="537.5" text-anchor="middle" font-size="11.5" fill="#1b2430">Document</text>
+<text x="470" y="550.5" text-anchor="middle" font-size="11.5" fill="#1b2430">upload</text>
+<circle cx="470" cy="650" r="56" fill="#eaf0f6" stroke="#1f4e79" stroke-width="1.8"/>
+<text x="470" y="641.5" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#1f4e79">P5</text>
+<text x="470" y="657.5" text-anchor="middle" font-size="11.5" fill="#1b2430">URL preview</text>
+<text x="470" y="670.5" text-anchor="middle" font-size="11.5" fill="#1b2430">and import</text>
+<circle cx="470" cy="770" r="56" fill="#eaf0f6" stroke="#1f4e79" stroke-width="1.8"/>
+<text x="470" y="761.5" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#1f4e79">P6</text>
+<text x="470" y="777.5" text-anchor="middle" font-size="11.5" fill="#1b2430">Administrative</text>
+<text x="470" y="790.5" text-anchor="middle" font-size="11.5" fill="#1b2430">management</text>
+<circle cx="700" cy="898" r="50" fill="#eaf0f6" stroke="#1f4e79" stroke-width="1.8"/>
+<text x="700" y="889.5" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#1f4e79">P7</text>
+<text x="700" y="905.5" text-anchor="middle" font-size="11.5" fill="#1b2430">Security</text>
+<text x="700" y="918.5" text-anchor="middle" font-size="11.5" fill="#1b2430">logging</text>
+<rect x="872" y="141.0" width="248" height="58" fill="#f7f1ea" stroke="#7a4a2b" stroke-width="1.4"/>
+<line x1="872" y1="141.0" x2="1120" y2="141.0" stroke="#7a4a2b" stroke-width="2.6"/>
+<line x1="872" y1="199.0" x2="1120" y2="199.0" stroke="#7a4a2b" stroke-width="2.6"/>
+<text x="996.0" y="168.0" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#7a4a2b">D1 users</text>
+<text x="996.0" y="184.0" text-anchor="middle" font-size="11.5" fill="#1b2430">credentials, role, lockout state</text>
+<rect x="872" y="261.0" width="248" height="58" fill="#f7f1ea" stroke="#7a4a2b" stroke-width="1.4"/>
+<line x1="872" y1="261.0" x2="1120" y2="261.0" stroke="#7a4a2b" stroke-width="2.6"/>
+<line x1="872" y1="319.0" x2="1120" y2="319.0" stroke="#7a4a2b" stroke-width="2.6"/>
+<text x="996.0" y="288.0" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#7a4a2b">D2 profiles</text>
+<text x="996.0" y="304.0" text-anchor="middle" font-size="11.5" fill="#1b2430">student-editable detail</text>
+<rect x="872" y="381.0" width="248" height="58" fill="#f7f1ea" stroke="#7a4a2b" stroke-width="1.4"/>
+<line x1="872" y1="381.0" x2="1120" y2="381.0" stroke="#7a4a2b" stroke-width="2.6"/>
+<line x1="872" y1="439.0" x2="1120" y2="439.0" stroke="#7a4a2b" stroke-width="2.6"/>
+<text x="996.0" y="408.0" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#7a4a2b">D3 courses / enrolments</text>
+<text x="996.0" y="424.0" text-anchor="middle" font-size="11.5" fill="#1b2430">catalogue and registrations</text>
+<rect x="872" y="501.0" width="248" height="58" fill="#f7f1ea" stroke="#7a4a2b" stroke-width="1.4"/>
+<line x1="872" y1="501.0" x2="1120" y2="501.0" stroke="#7a4a2b" stroke-width="2.6"/>
+<line x1="872" y1="559.0" x2="1120" y2="559.0" stroke="#7a4a2b" stroke-width="2.6"/>
+<text x="996.0" y="528.0" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#7a4a2b">D4 documents</text>
+<text x="996.0" y="544.0" text-anchor="middle" font-size="11.5" fill="#1b2430">upload metadata and files</text>
+<rect x="872" y="621.0" width="248" height="58" fill="#f7f1ea" stroke="#7a4a2b" stroke-width="1.4"/>
+<line x1="872" y1="621.0" x2="1120" y2="621.0" stroke="#7a4a2b" stroke-width="2.6"/>
+<line x1="872" y1="679.0" x2="1120" y2="679.0" stroke="#7a4a2b" stroke-width="2.6"/>
+<text x="996.0" y="648.0" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#7a4a2b">D5 login_attempts</text>
+<text x="996.0" y="664.0" text-anchor="middle" font-size="11.5" fill="#1b2430">rate-limiting counters</text>
+<rect x="872" y="741.0" width="248" height="58" fill="#f7f1ea" stroke="#7a4a2b" stroke-width="1.4"/>
+<line x1="872" y1="741.0" x2="1120" y2="741.0" stroke="#7a4a2b" stroke-width="2.6"/>
+<line x1="872" y1="799.0" x2="1120" y2="799.0" stroke="#7a4a2b" stroke-width="2.6"/>
+<text x="996.0" y="768.0" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#7a4a2b">D6 audit_log</text>
+<text x="996.0" y="784.0" text-anchor="middle" font-size="11.5" fill="#1b2430">append-only security events</text>
+<path d="M 252 176 L 300 176 L 300 152 L 412 152" fill="none" stroke="#33455a" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="296" y="140" text-anchor="start" font-size="11" fill="#33455a">admin credentials + OTP</text>
+<path d="M 252 204 L 300 204 L 300 762 L 412 762" fill="none" stroke="#33455a" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="306" y="754" text-anchor="start" font-size="11" fill="#33455a">course and enrolment changes</text>
+<path d="M 252 366 L 316 366 L 316 180 L 412 180" fill="none" stroke="#33455a" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="322" y="214" text-anchor="start" font-size="11" fill="#33455a">credentials</text>
+<path d="M 252 378 L 330 378 L 330 290 L 412 290" fill="none" stroke="#33455a" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="336" y="282" text-anchor="start" font-size="11" fill="#33455a">profile edits + CSRF token</text>
+<path d="M 252 390 L 344 390 L 344 412 L 412 412" fill="none" stroke="#33455a" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="350" y="430" text-anchor="start" font-size="11" fill="#33455a">course selection</text>
+<path d="M 252 402 L 358 402 L 358 532 L 412 532" fill="none" stroke="#33455a" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="364" y="524" text-anchor="start" font-size="11" fill="#33455a">document file</text>
+<path d="M 252 414 L 372 414 L 372 652 L 412 652" fill="none" stroke="#33455a" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="378" y="644" text-anchor="start" font-size="11" fill="#33455a">document URL</text>
+<path d="M 252 558 L 300 558 L 300 196 L 412 196" fill="none" stroke="#33455a" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="258" y="552" text-anchor="start" font-size="11" fill="#33455a">sign-in attempt</text>
+<path d="M 412 140 L 282 140 L 282 354 L 252 354" fill="none" stroke="#33455a" stroke-width="1.5" marker-end="url(#a)" stroke-dasharray="7 5"/>
+<text x="258" y="342" text-anchor="start" font-size="11" fill="#33455a">session cookie; generic errors only</text>
+<path d="M 528 170 L 870 170" fill="none" stroke="#33455a" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="706" y="160" text-anchor="middle" font-size="11" fill="#33455a">lookup by e-mail; verify hash</text>
+<path d="M 528 290 L 870 290" fill="none" stroke="#33455a" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="706" y="280" text-anchor="middle" font-size="11" fill="#33455a">read / write profile</text>
+<path d="M 528 410 L 870 410" fill="none" stroke="#33455a" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="706" y="400" text-anchor="middle" font-size="11" fill="#33455a">enrol / drop</text>
+<path d="M 528 530 L 870 530" fill="none" stroke="#33455a" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="706" y="520" text-anchor="middle" font-size="11" fill="#33455a">store metadata</text>
+<path d="M 510 208 L 826 208 L 826 640 L 870 640" fill="none" stroke="#33455a" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="832" y="618" text-anchor="start" font-size="11" fill="#33455a">record attempt</text>
+<path d="M 510 732 L 806 732 L 806 428 L 870 428" fill="none" stroke="#33455a" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="706" y="446" text-anchor="middle" font-size="11" fill="#33455a">catalogue writes</text>
+<path d="M 494 220 L 600 220 L 600 884" fill="none" stroke="#9a8b72" stroke-width="1.5" marker-end="url(#al)" stroke-dasharray="3 4"/>
+<path d="M 494 340 L 600 340 L 600 884" fill="none" stroke="#9a8b72" stroke-width="1.5" marker-end="url(#al)" stroke-dasharray="3 4"/>
+<path d="M 494 460 L 600 460 L 600 884" fill="none" stroke="#9a8b72" stroke-width="1.5" marker-end="url(#al)" stroke-dasharray="3 4"/>
+<path d="M 494 580 L 600 580 L 600 884" fill="none" stroke="#9a8b72" stroke-width="1.5" marker-end="url(#al)" stroke-dasharray="3 4"/>
+<path d="M 494 700 L 600 700 L 600 884" fill="none" stroke="#9a8b72" stroke-width="1.5" marker-end="url(#al)" stroke-dasharray="3 4"/>
+<path d="M 494 820 L 600 820 L 600 884" fill="none" stroke="#9a8b72" stroke-width="1.5" marker-end="url(#al)" stroke-dasharray="3 4"/>
+<text x="610" y="852" font-size="11" fill="#9a8b72">security events from P1&#8211;P6</text>
+<path d="M 752 878 L 870 796" fill="none" stroke="#9a8b72" stroke-width="1.5" marker-end="url(#al)" stroke-dasharray="3 4"/>
+<text x="806" y="832" text-anchor="middle" font-size="11" fill="#9a8b72">append event</text>
+<path d="M 528 668 L 790 668 L 790 946 L 864 946" fill="none" stroke="#33455a" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="796" y="966" text-anchor="start" font-size="11" fill="#33455a">vetted outbound fetch</text>
+<path d="M 864 908 L 772 908 L 772 684 L 528 684" fill="none" stroke="#33455a" stroke-width="1.5" marker-end="url(#a)" stroke-dasharray="7 5"/>
+<text x="796" y="900" text-anchor="start" font-size="11" fill="#33455a">preview metadata only</text>
+<rect x="40" y="690" width="256" height="152" fill="#fbfcfd" stroke="#d8dee6" rx="5"/>
+<text x="54" y="714" font-size="13" font-weight="bold" fill="#1b2430">Legend</text>
+<rect x="56" y="726" width="28" height="17" fill="#eef2f6" stroke="#4a5a6a"/>
+<text x="96" y="739" font-size="11.5" fill="#1b2430">External entity</text>
+<circle cx="70" cy="764" r="10" fill="#eaf0f6" stroke="#1f4e79"/>
+<text x="96" y="768" font-size="11.5" fill="#1b2430">Process</text>
+<line x1="56" y1="784" x2="84" y2="784" stroke="#7a4a2b" stroke-width="2.6"/>
+<line x1="56" y1="796" x2="84" y2="796" stroke="#7a4a2b" stroke-width="2.6"/>
+<text x="96" y="794" font-size="11.5" fill="#1b2430">Data store</text>
+<line x1="56" y1="812" x2="84" y2="812" stroke="#33455a" stroke-width="1.5"/>
+<text x="96" y="816" font-size="11.5" fill="#1b2430">Data flow</text>
+<line x1="56" y1="828" x2="84" y2="828" stroke="#9a8b72" stroke-width="1.5" stroke-dasharray="3 4"/>
+<text x="96" y="832" font-size="11.5" fill="#1b2430">Audit flow</text>
+</svg>

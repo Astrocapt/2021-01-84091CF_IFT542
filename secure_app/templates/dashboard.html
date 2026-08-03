@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h1>Welcome, {{ session['full_name'] }}</h1>
+
+<section class="card">
+  <h2>Profile</h2>
+  {% if profile %}
+    <dl>
+      <dt>Department</dt><dd>{{ profile['department'] }}</dd>
+      <dt>Level</dt><dd>{{ profile['level'] }}</dd>
+      <dt>Phone</dt><dd>{{ profile['phone'] }}</dd>
+      <!-- XSS-protected field. Jinja autoescaping converts any markup
+           metacharacter in this stored value into its HTML entity, so the
+           value is rendered as text and never parsed as markup. -->
+      <dt>Bio</dt><dd id="bio-field">{{ profile['bio'] }}</dd>
+    </dl>
+  {% else %}
+    <p>No profile details yet. <a href="{{ url_for('main.profile') }}">Add them</a>.</p>
+  {% endif %}
+</section>
+
+<section class="card">
+  <h2>Registered courses</h2>
+  {% if enrolments %}
+  <table>
+    <thead><tr><th>Code</th><th>Title</th><th>Units</th><th></th></tr></thead>
+    <tbody>
+    {% for e in enrolments %}
+      <tr>
+        <td>{{ e['code'] }}</td><td>{{ e['title'] }}</td><td>{{ e['units'] }}</td>
+        <td>
+          <form method="post" action="{{ url_for('main.drop_course') }}" class="inline">
+            <input type="hidden" name="{{ csrf_field }}" value="{{ csrf_token }}">
+            <input type="hidden" name="course_id" value="{{ e['id'] }}">
+            <button type="submit" class="link">Drop</button>
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}<p>No courses registered yet.</p>{% endif %}
+</section>
+
+<section class="card">
+  <h2>Documents</h2>
+  <form method="post" action="{{ url_for('main.upload_document') }}" enctype="multipart/form-data">
+    <input type="hidden" name="{{ csrf_field }}" value="{{ csrf_token }}">
+    <input type="file" name="document" accept=".pdf,.png,.jpg,.jpeg" required>
+    <button type="submit">Upload</button>
+  </form>
+  <ul>
+  {% for d in documents %}
+    <li>{{ d['original_name'] }} &mdash; {{ d['content_type'] }}, {{ d['size_bytes'] }} bytes</li>
+  {% else %}
+    <li>No documents uploaded.</li>
+  {% endfor %}
+  </ul>
+</section>
+{% endblock %}

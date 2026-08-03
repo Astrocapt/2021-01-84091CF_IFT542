@@ -1,0 +1,14 @@
+EVIDENCE E3 - Anti-CSRF token enforcement
+Captured: 2026-08-03 03:09:47 UTC
+==========================================================================
+[1] Authenticated POST with NO token -> expect 403
+    HTTP 403
+
+[2] Authenticated POST with a FORGED token -> expect 403
+    HTTP 403
+
+[3] Authenticated POST with the ISSUED token -> expect 302 (accepted)
+    HTTP 302  Location: http://127.0.0.1:5000/courses
+
+[4] Session cookie flags as issued by the server:
+    Set-Cookie: sr_session=eyJfY3NyZl90b2tlbiI6IjZPUW5qeDExYkZfM0ZiSWFvTlVLUG9uWUQ3Ri1ld2pmQmg1ejNWcWdXME0ifQ.anAGgA.ZIBUGojYBcUAq-VZrhMMDYTuEqU; HttpOnly; Path=/; SameSite=Lax

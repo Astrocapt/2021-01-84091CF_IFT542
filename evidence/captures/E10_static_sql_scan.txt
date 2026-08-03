@@ -1,0 +1,32 @@
+EVIDENCE E10 - Static scan for dynamically built SQL
+Captured: 2026-08-03 03:10:03 UTC
+Method: each module is parsed to an abstract syntax tree and inspected for
+        SQL text built from a value (f-string, % format, .format(), +).
+        Parsing the AST rather than grepping means prose in comments and
+        docstrings cannot raise a false positive.
+Source: tests/test_sqli.py :: find_dynamic_sql()
+======================================================================
+
+[A] CONTROL - a file deliberately containing all four unsafe patterns
+    must be flagged, otherwise the scanner proves nothing:
+       line 2: f-string SQL
+       line 4: percent-formatted SQL
+       line 6: .format() SQL
+       line 8: concatenated SQL
+
+[B] The legacy prototype under review (the 'before' state):
+       line 51: f-string SQL
+       line 62: f-string SQL
+      -> line 51 is legacy_authenticate(); line 62 is legacy_course_search()
+
+[C] The hardened application (the 'after' state):
+      secure_app/__init__.py    clean - no dynamically built SQL
+      secure_app/auth.py        clean - no dynamically built SQL
+      secure_app/config.py      clean - no dynamically built SQL
+      secure_app/db.py          clean - no dynamically built SQL
+      secure_app/routes.py      clean - no dynamically built SQL
+      secure_app/security.py    clean - no dynamically built SQL
+
+Every statement in secure_app reaches the engine as fixed text with bound
+parameters. This check runs as part of the test suite, so a regression
+that reintroduces string-built SQL fails the build.

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Verification{% endblock %}
+{% block content %}
+<h1>Two-factor verification</h1>
+<p>This account holds administrative privileges. Enter the 6-digit code from your authenticator application.</p>
+<form method="post" action="{{ url_for('auth.mfa') }}" class="card">
+  <input type="hidden" name="{{ csrf_field }}" value="{{ csrf_token }}">
+  <label for="code">Verification code</label>
+  <input type="text" id="code" name="code" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" required autocomplete="one-time-code">
+  <button type="submit">Verify</button>
+</form>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Request rejected{% endblock %}
+{% block content %}
+<section class="card">
+  <h1>{{ code }}</h1>
+  <p>{{ message }}</p>
+  {% if reference %}<p class="muted">Reference: {{ reference }}</p>{% endif %}
+  <p><a href="{{ url_for('main.index') }}">Return to the portal</a></p>
+</section>
+{% endblock %}

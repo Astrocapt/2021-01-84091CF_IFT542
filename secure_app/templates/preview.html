@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Document preview{% endblock %}
+{% block content %}
+<h1>Import a document reference</h1>
+<p class="muted">Only destinations on the approved registry list can be fetched.</p>
+<form method="post" action="{{ url_for('main.preview_url') }}" class="card">
+  <input type="hidden" name="{{ csrf_field }}" value="{{ csrf_token }}">
+  <label for="url">Document URL</label>
+  <input type="url" id="url" name="url" maxlength="2048" required placeholder="https://docs.futminna.test/handbook.pdf">
+  <button type="submit">Fetch preview</button>
+</form>
+{% if result %}
+<section class="card">
+  <h2>Preview result</h2>
+  <dl>
+    <dt>URL</dt><dd>{{ result['url'] }}</dd>
+    <dt>Resolved address</dt><dd>{{ result['resolved'] }}</dd>
+    <dt>Status</dt><dd>{{ result['status'] }}</dd>
+    <dt>Content type</dt><dd>{{ result['content_type'] }}</dd>
+    <dt>Bytes read</dt><dd>{{ result['bytes'] }}</dd>
+  </dl>
+</section>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,25 @@
+EVIDENCE E1 - HTTP security response headers
+Captured: 2026-08-03 03:09:47 UTC    Target: http://127.0.0.1:5000 (localhost lab only)
+Command:  curl -sS -D - -o /dev/null http://127.0.0.1:5000/login
+==========================================================================
+HTTP/1.1 200 OK
+Server: registration-app 
+Date: Mon, 03 Aug 2026 03:09:52 GMT
+Content-Type: text/html; charset=utf-8
+Content-Length: 1007
+Content-Security-Policy: default-src 'self'; script-src 'self' 'nonce-WtHVgidh_4XI4ZetdGqv5w'; style-src 'self' 'nonce-WtHVgidh_4XI4ZetdGqv5w'; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'; connect-src 'self'; require-trusted-types-for 'script'
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Referrer-Policy: no-referrer
+Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=()
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Resource-Policy: same-origin
+Cache-Control: no-store
+Vary: Cookie
+Set-Cookie: sr_session=eyJfY3NyZl90b2tlbiI6ImVwX21EVjFrNHVYeUItNjhQSFFUUWV5WGx5eE9fbmw3SHdCd1RfdDJWRmMifQ.anAGgA.MeOeDI8SPgZuvuZbr52cUZluIS0; HttpOnly; Path=/; SameSite=Lax
+Connection: close
+
+
+Strict-Transport-Security is emitted only over TLS and is therefore absent
+on this plain-HTTP lab origin by design (secure_app/__init__.py).
+The Server banner is overwritten so the framework/version is not disclosed.

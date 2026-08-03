@@ -1,0 +1,33 @@
+/* External stylesheet only. The CSP forbids inline style, so no style
+   attribute or <style> block appears anywhere in the templates. */
+:root { --ink:#1b2430; --muted:#5c6b7a; --line:#d8dee6; --accent:#1f4e79; --bg:#f6f8fa; }
+* { box-sizing: border-box; }
+body { margin:0; font-family: Georgia, 'Times New Roman', serif; color:var(--ink);
+       background:var(--bg); line-height:1.55; }
+.topbar { display:flex; justify-content:space-between; align-items:center;
+          padding:0.8rem 1.5rem; background:var(--accent); color:#fff; flex-wrap:wrap; }
+.brand { font-weight:bold; letter-spacing:0.02em; }
+nav a, nav button.link { color:#fff; margin-left:1rem; text-decoration:none; }
+main { max-width:60rem; margin:1.5rem auto; padding:0 1rem; }
+h1 { font-size:1.5rem; } h2 { font-size:1.15rem; }
+.card { background:#fff; border:1px solid var(--line); border-radius:6px;
+        padding:1rem 1.25rem; margin-bottom:1.25rem; }
+label { display:block; margin-top:0.7rem; font-size:0.9rem; color:var(--muted); }
+input, textarea, select { width:100%; padding:0.5rem; border:1px solid var(--line);
+        border-radius:4px; font:inherit; }
+.inline { display:inline; } .inline input { width:auto; }
+button { margin-top:0.9rem; padding:0.5rem 1rem; background:var(--accent);
+         color:#fff; border:0; border-radius:4px; font:inherit; cursor:pointer; }
+button.link { background:none; border:0; color:inherit; text-decoration:underline;
+              padding:0; margin:0; cursor:pointer; }
+table { width:100%; border-collapse:collapse; margin-top:0.5rem; }
+th, td { text-align:left; padding:0.45rem 0.5rem; border-bottom:1px solid var(--line); font-size:0.92rem; }
+dl { display:grid; grid-template-columns:10rem 1fr; gap:0.25rem 1rem; }
+dt { color:var(--muted); font-size:0.9rem; } dd { margin:0; }
+.flash { list-style:none; padding:0; }
+.flash li { padding:0.6rem 0.9rem; border-radius:4px; margin-bottom:0.5rem; }
+.flash-error { background:#fdecea; border:1px solid #f5c2bd; }
+.flash-success { background:#eaf6ec; border:1px solid #bfe0c6; }
+.flash-info { background:#eaf0f6; border:1px solid #c3d3e6; }
+.muted { color:var(--muted); font-size:0.9rem; }
+footer { text-align:center; color:var(--muted); padding:1.5rem; }

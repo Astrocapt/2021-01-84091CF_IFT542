@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Courses{% endblock %}
+{% block content %}
+<h1>Available courses</h1>
+<form method="get" action="{{ url_for('main.courses') }}" class="inline">
+  <input type="search" name="q" maxlength="60" value="{{ term }}" placeholder="Search code or title">
+  <button type="submit">Search</button>
+</form>
+<table class="card">
+  <thead><tr><th>Code</th><th>Title</th><th>Units</th><th>Semester</th><th></th></tr></thead>
+  <tbody>
+  {% for c in courses %}
+    <tr>
+      <td>{{ c['code'] }}</td><td>{{ c['title'] }}</td><td>{{ c['units'] }}</td><td>{{ c['semester'] }}</td>
+      <td>
+        {% if c['code'] in enrolled %}<span class="muted">Registered</span>
+        {% else %}
+        <form method="post" action="{{ url_for('main.register_course') }}" class="inline">
+          <input type="hidden" name="{{ csrf_field }}" value="{{ csrf_token }}">
+          <input type="hidden" name="course_id" value="{{ c['id'] }}">
+          <button type="submit">Register</button>
+        </form>
+        {% endif %}
+      </td>
+    </tr>
+  {% else %}<tr><td colspan="5">No courses matched.</td></tr>{% endfor %}
+  </tbody>
+</table>
+{% endblock %}

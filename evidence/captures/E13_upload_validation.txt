@@ -1,0 +1,23 @@
+EVIDENCE E13 - Upload validation
+Captured: 2026-08-03 03:09:47 UTC
+Policy: extension allowlist, declared-type allowlist, magic-byte check,
+        2 MiB ceiling, server-generated storage name outside any served path.
+======================================================================
+
+    notes.sh (disallowed extension)            -> not accepted
+    fake.pdf (content contradicts type)        -> do not match
+    real.pdf named '../../handbook.pdf'        -> Document uploaded
+
+Stored record for the accepted file:
+    original_name : handbook.pdf   (path component stripped)
+    stored_name   : 5d044c9cf45f2eac36a0eeef10c50bb2.pdf   (server-generated, random)
+    content_type  : application/pdf   (from magic bytes, not trusted from the client)
+    size_bytes    : 35
+
+Files on disk in the upload directory (no original names, no executable
+extensions, and the directory is not served by the web application):
+    -rw-------  5d044c9cf45f2eac36a0eeef10c50bb2.pdf
+    -rw-------  6c37fb799fec423ded8c45606268f541.pdf
+    -rw-------  b35d731497262eb2f94bcf0f8a49a7eb.pdf
+    -rw-------  d1a2b50d280084331e4ead11d477e008.pdf
+    -rw-------  e621970bfaebbce13f7118951d7787f1.pdf

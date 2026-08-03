@@ -1,0 +1,61 @@
+EVIDENCE E7 - SQL injection: before and after
+Generated: 2026-08-03 03:09:53 UTC
+Fictitious in-memory data. No network access. No external database.
+==========================================================================
+
+Identical test input supplied to both implementations:  "' OR '1'='1"
+(a textbook always-true condition, used only to compare behaviour)
+
+==========================================================================
+BEFORE  -  insecure_baseline/legacy_login.py :: legacy_authenticate()
+==========================================================================
+
+Statement the engine actually received:
+    SELECT id, email, role FROM users WHERE email = '' OR '1'='1' AND password = '' OR '1'='1'
+
+Result: ROW RETURNED - authentication bypassed
+    matched account id=1  email=student.one@lab.test  role=student
+
+Why: the value was pasted into the statement before parsing, so the
+quote characters closed the literal and the remainder was read as
+SQL syntax. The submitted data changed what the command MEANS.
+
+==========================================================================
+AFTER   -  secure_app/db.py :: find_user_by_email() pattern
+==========================================================================
+
+Statement text sent to the engine (fixed, parsed once):
+    SELECT id, email, password_hash, role FROM users WHERE email = ?
+Value bound separately as a parameter:
+    "' OR '1'='1"
+
+Result: no row returned - the input was treated as an ordinary string
+
+Why: parsing completes before the value is attached. The engine is
+looking for an account whose email address is literally that string.
+No such account exists, so nothing matches. No character inside the
+value can be promoted to syntax, because syntax was already decided.
+
+==========================================================================
+CONTROL  -  the hardened path still authenticates a genuine account
+==========================================================================
+
+Valid credentials      -> accepted
+Wrong password         -> rejected
+Unknown account        -> rejected
+
+==========================================================================
+WRITE PATH  -  a separator inside a value does not terminate a statement
+==========================================================================
+
+Value submitted : "Systems'); DROP TABLE users; --"
+Value stored    : "Systems'); DROP TABLE users; --"
+users table     : still present, 3 rows
+
+The value round-tripped unchanged and no second statement executed.
+
+==========================================================================
+Conclusion: the defect is behavioural, not cosmetic. Parameterisation
+removes the attacker's ability to influence statement structure, which
+is the property that makes the class of flaw exploitable at all.
+==========================================================================
